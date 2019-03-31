@@ -39,6 +39,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Personal.findByNombre", query = "SELECT p FROM Personal p WHERE p.nombre = :nombre")
     , @NamedQuery(name = "Personal.findByApellido", query = "SELECT p FROM Personal p WHERE p.apellido = :apellido")
     , @NamedQuery(name = "Personal.findByFechaContratacion", query = "SELECT p FROM Personal p WHERE p.fechaContratacion = :fechaContratacion")
+    , @NamedQuery(name = "Personal.Reparacion", query = "SELECT t FROM Personal t JOIN FETCH t.reparacionCollection rep WHERE rep.idReparacion=:id")
+    , @NamedQuery(name = "Personal.Proceso", query = "SELECT DISTINCT t FROM Personal t JOIN FETCH t.especialidadCollection es JOIN FETCH es.procesoCollection pro WHERE pro.idProceso=:id")
     , @NamedQuery(name = "Personal.findByActivo", query = "SELECT p FROM Personal p WHERE p.activo = :activo")})
 public class Personal implements Serializable {
 

@@ -33,6 +33,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Sucursal.findByIdSucursal", query = "SELECT s FROM Sucursal s WHERE s.idSucursal = :idSucursal")
     , @NamedQuery(name = "Sucursal.findByNombre", query = "SELECT s FROM Sucursal s WHERE s.nombre = :nombre")
     , @NamedQuery(name = "Sucursal.findByDireccion", query = "SELECT s FROM Sucursal s WHERE s.direccion = :direccion")
+    
+    , @NamedQuery(name = "Sucursal.Reparacion", query = "SELECT t FROM Sucursal t JOIN FETCH t.personalCollection per JOIN FETCH per.reparacionCollection r WHERE r.idReparacion=:id")
+
+   // , @NamedQuery(name = "Sucursal.Reparacion", query = "SELECT repa FROM Sucursal t JOIN FETCH t.personalCollection tra JOIN FETCH tra.reparacionCollection repa where t.idSucursal=:idSucursal")
     , @NamedQuery(name = "Sucursal.findByActivo", query = "SELECT s FROM Sucursal s WHERE s.activo = :activo")
     , @NamedQuery(name = "Sucursal.findByTelefono", query = "SELECT s FROM Sucursal s WHERE s.telefono = :telefono")})
 public class Sucursal implements Serializable {

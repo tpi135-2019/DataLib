@@ -36,6 +36,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Reparacion.findAll", query = "SELECT r FROM Reparacion r")
     , @NamedQuery(name = "Reparacion.findByIdReparacion", query = "SELECT r FROM Reparacion r WHERE r.idReparacion = :idReparacion")
     , @NamedQuery(name = "Reparacion.findByFecha", query = "SELECT r FROM Reparacion r WHERE r.fecha = :fecha")
+    , @NamedQuery(name = "ReparacionPorPlaca", query = "SELECT t FROM Reparacion t where t.idDiagnostico.idVehiculo.idVehiculo=:placa")
+    , @NamedQuery(name = "Reaparacion.Personal", query = "SELECT t FROM Reparacion t JOIN FETCH t.personalCollection per where per.idMecanico=:id")
+    , @NamedQuery(name = "Reparacion.Fechas", query = "SELECT t,ve.idVehiculo FROM Reparacion t JOIN FETCH t.idDiagnostico.idVehiculo ve WHERE t.fecha between :desde and :hasta ")
+    , @NamedQuery(name = "Reparacion.Diagnostico", query = "SELECT t FROM Reparacion t WHERE t.idDiagnostico.idDiagnostico=:id")
     , @NamedQuery(name = "Reparacion.findByObservacion", query = "SELECT r FROM Reparacion r WHERE r.observacion = :observacion")})
 public class Reparacion implements Serializable {
 
@@ -150,5 +154,5 @@ public class Reparacion implements Serializable {
     public String toString() {
         return "ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.Reparacion[ idReparacion=" + idReparacion + " ]";
     }
-    
+
 }
