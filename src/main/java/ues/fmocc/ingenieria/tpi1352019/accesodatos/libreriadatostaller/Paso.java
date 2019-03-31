@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Paso.findAll", query = "SELECT p FROM Paso p")
     , @NamedQuery(name = "Paso.findByIdPaso", query = "SELECT p FROM Paso p WHERE p.idPaso = :idPaso")
     , @NamedQuery(name = "Paso.findByNombre", query = "SELECT p FROM Paso p WHERE p.nombre = :nombre")
+    , @NamedQuery(name = "Paso.Reparacion", query = "SELECT t,pp.idProceso.nombre FROM Paso t JOIN FETCH t.pasoProcesoCollection pp JOIN FETCH pp.reparacionCollection r WHERE r.idReparacion=:id")
     , @NamedQuery(name = "Paso.findByActivo", query = "SELECT p FROM Paso p WHERE p.activo = :activo")
     , @NamedQuery(name = "Paso.findByDescripcion", query = "SELECT p FROM Paso p WHERE p.descripcion = :descripcion")})
 public class Paso implements Serializable {
