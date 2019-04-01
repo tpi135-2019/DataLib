@@ -28,15 +28,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "HistorialPropietario.findAll", query = "SELECT h FROM HistorialPropietario h")
     , @NamedQuery(name = "HistorialPropietario.findByIdVehiculo", query = "SELECT h FROM HistorialPropietario h WHERE h.historialPropietarioPK.idVehiculo = :idVehiculo")
     , @NamedQuery(name = "HistorialPropietario.findByIdPropietario", query = "SELECT h FROM HistorialPropietario h WHERE h.historialPropietarioPK.idPropietario = :idPropietario")
-    , @NamedQuery(name = "HistorialPropietario.findByFecha", query = "SELECT h FROM HistorialPropietario h WHERE h.fecha = :fecha")})
+    })
 public class HistorialPropietario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected HistorialPropietarioPK historialPropietarioPK;
-    @Column(name = "fecha")
-    @Temporal(TemporalType.DATE)
-    private Date fecha;
 
     public HistorialPropietario() {
     }
@@ -57,13 +54,7 @@ public class HistorialPropietario implements Serializable {
         this.historialPropietarioPK = historialPropietarioPK;
     }
 
-    public Date getFecha() {
-        return fecha;
-    }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
 
     @Override
     public int hashCode() {

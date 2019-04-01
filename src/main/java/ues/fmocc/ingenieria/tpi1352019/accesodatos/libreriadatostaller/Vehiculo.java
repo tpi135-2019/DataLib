@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Vehiculo.findByNumeroChasis", query = "SELECT v FROM Vehiculo v WHERE v.numeroChasis = :numeroChasis")
     , @NamedQuery(name = "Vehiculo.findByNumeroMotor", query = "SELECT v FROM Vehiculo v WHERE v.numeroMotor = :numeroMotor")
     , @NamedQuery(name = "Vehiculo.findByVin", query = "SELECT v FROM Vehiculo v WHERE v.vin = :vin")
-    , @NamedQuery(name = "Vehiculo.findByColor", query = "SELECT v FROM Vehiculo v WHERE v.color = :color")})
+    , @NamedQuery(name = "Vehiculo.findByColor", query = "SELECT v FROM Vehiculo v WHERE v.color = :color")
+    , @NamedQuery(name= "Vehiculo.HistorialPropietarios", query = "SELECT p FROM HistorialPropietario h, Propietario p WHERE h.historialPropietarioPK.idPropietario = p.idPropietario AND h.historialPropietarioPK.idVehiculo = :placa")})
 public class Vehiculo implements Serializable {
 
     private static final long serialVersionUID = 1L;
