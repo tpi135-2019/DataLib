@@ -120,5 +120,4 @@ public class HistorialPropietario implements Serializable {
     public String toString() {
         return "ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.HistorialPropietario[ numeroRegistro=" + numeroRegistro + " ]";
     }
-    
 }
