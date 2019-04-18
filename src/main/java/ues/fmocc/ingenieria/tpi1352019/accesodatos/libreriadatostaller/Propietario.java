@@ -130,7 +130,7 @@ public class Propietario implements Serializable {
         }
         Propietario other = (Propietario) object;
         return !((this.idPropietario == null && other.idPropietario != null) || (this.idPropietario != null && !this.idPropietario.equals(other.idPropietario))
-                || (!this.nombre.isEmpty() && !this.nombre.equals(other.nombre)));
+             || (this.nombre != null && !this.nombre.equals(other.getNombre())));
     }
 
     @Override

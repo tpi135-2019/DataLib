@@ -131,7 +131,7 @@ public class TipoVehiculo implements Serializable {
         }
         TipoVehiculo other = (TipoVehiculo) object;
         return !((this.idTipoVehiculo == null && other.idTipoVehiculo != null) || (this.idTipoVehiculo != null && !this.idTipoVehiculo.equals(other.idTipoVehiculo))
-                || (!this.nombre.isEmpty() && !this.nombre.equals(other.nombre)));
+                || (this.nombre != null && !this.nombre.equals(other.nombre)));
     }
 
     @Override

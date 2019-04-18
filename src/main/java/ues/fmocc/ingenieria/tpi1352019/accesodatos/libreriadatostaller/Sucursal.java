@@ -135,7 +135,7 @@ public class Sucursal implements Serializable {
         }
         Sucursal other = (Sucursal) object;
         return !((this.idSucursal == null && other.idSucursal != null) || (this.idSucursal != null && !this.idSucursal.equals(other.idSucursal))
-                || (!this.nombre.isEmpty() && !this.nombre.equals(other.nombre)));
+              || (this.nombre != null && !this.nombre.equals(other.getNombre())));
     }
 
     @Override

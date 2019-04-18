@@ -121,7 +121,7 @@ public class Paso implements Serializable {
         }
         Paso other = (Paso) object;
         return !((this.idPaso == null && other.idPaso != null) || (this.idPaso != null && !this.idPaso.equals(other.idPaso))
-                || (!this.nombre.isEmpty() && !this.nombre.equals(other.nombre)));
+               || (this.nombre != null && !this.nombre.equals(other.getNombre())));
     }
 
     @Override

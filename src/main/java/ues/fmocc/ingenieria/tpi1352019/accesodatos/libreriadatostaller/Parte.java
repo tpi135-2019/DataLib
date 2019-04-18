@@ -117,7 +117,7 @@ public class Parte implements Serializable {
         }
         Parte other = (Parte) object;
         return !((this.idParte == null && other.idParte != null) || (this.idParte != null && !this.idParte.equals(other.idParte))
-                || (!this.nombre.isEmpty() && !this.nombre.equals(other.nombre)));
+                 || (this.nombre != null && !this.nombre.equals(other.getNombre())));
     }
 
     @Override
