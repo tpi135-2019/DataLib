@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author kevin
  */
 @Entity
-@Table(name = "propietario", catalog = "taller", schema = "")
+@Table(name = "propietario")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Propietario.findAll", query = "SELECT p FROM Propietario p")
@@ -129,10 +129,8 @@ public class Propietario implements Serializable {
             return false;
         }
         Propietario other = (Propietario) object;
-        if ((this.idPropietario == null && other.idPropietario != null) || (this.idPropietario != null && !this.idPropietario.equals(other.idPropietario))) {
-            return false;
-        }
-        return true;
+        return !((this.idPropietario == null && other.idPropietario != null) || (this.idPropietario != null && !this.idPropietario.equals(other.idPropietario))
+                || (!this.nombre.isEmpty() && !this.nombre.equals(other.nombre)));
     }
 
     @Override

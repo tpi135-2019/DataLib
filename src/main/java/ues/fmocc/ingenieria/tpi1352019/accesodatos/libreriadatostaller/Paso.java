@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author kevin
  */
 @Entity
-@Table(name = "paso", catalog = "taller", schema = "")
+@Table(name = "paso")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Paso.findAll", query = "SELECT p FROM Paso p")
@@ -120,10 +120,8 @@ public class Paso implements Serializable {
             return false;
         }
         Paso other = (Paso) object;
-        if ((this.idPaso == null && other.idPaso != null) || (this.idPaso != null && !this.idPaso.equals(other.idPaso))) {
-            return false;
-        }
-        return true;
+        return !((this.idPaso == null && other.idPaso != null) || (this.idPaso != null && !this.idPaso.equals(other.idPaso))
+                || (!this.nombre.isEmpty() && !this.nombre.equals(other.nombre)));
     }
 
     @Override

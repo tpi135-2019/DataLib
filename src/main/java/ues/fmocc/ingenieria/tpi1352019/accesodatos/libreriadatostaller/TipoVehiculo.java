@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author kevin
  */
 @Entity
-@Table(name = "tipo_vehiculo", catalog = "taller", schema = "")
+@Table(name = "tipo_vehiculo")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TipoVehiculo.findAll", query = "SELECT t FROM TipoVehiculo t")
@@ -130,10 +130,8 @@ public class TipoVehiculo implements Serializable {
             return false;
         }
         TipoVehiculo other = (TipoVehiculo) object;
-        if ((this.idTipoVehiculo == null && other.idTipoVehiculo != null) || (this.idTipoVehiculo != null && !this.idTipoVehiculo.equals(other.idTipoVehiculo))) {
-            return false;
-        }
-        return true;
+        return !((this.idTipoVehiculo == null && other.idTipoVehiculo != null) || (this.idTipoVehiculo != null && !this.idTipoVehiculo.equals(other.idTipoVehiculo))
+                || (!this.nombre.isEmpty() && !this.nombre.equals(other.nombre)));
     }
 
     @Override

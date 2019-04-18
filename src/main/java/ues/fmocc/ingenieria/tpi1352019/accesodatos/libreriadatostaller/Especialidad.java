@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author kevin
  */
 @Entity
-@Table(name = "especialidad", catalog = "taller", schema = "")
+@Table(name = "especialidad")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Especialidad.findAll", query = "SELECT e FROM Especialidad e")
@@ -136,10 +136,8 @@ public class Especialidad implements Serializable {
             return false;
         }
         Especialidad other = (Especialidad) object;
-        if ((this.idEspecialidad == null && other.idEspecialidad != null) || (this.idEspecialidad != null && !this.idEspecialidad.equals(other.idEspecialidad))) {
-            return false;
-        }
-        return true;
+        return !((this.idEspecialidad == null && other.idEspecialidad != null) || (this.idEspecialidad != null && !this.idEspecialidad.equals(other.idEspecialidad))
+                || (this.nombre != null && !this.nombre.equals(other.getNombre())));
     }
 
     @Override

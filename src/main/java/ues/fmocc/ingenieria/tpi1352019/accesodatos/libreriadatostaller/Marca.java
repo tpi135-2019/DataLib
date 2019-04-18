@@ -7,6 +7,8 @@ package ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,7 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author kevin
  */
 @Entity
-@Table(name = "marca", catalog = "taller", schema = "")
+@Table(name = "marca")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Marca.findAll", query = "SELECT m FROM Marca m")
@@ -114,15 +116,14 @@ public class Marca implements Serializable {
 
     @Override
     public boolean equals(Object object) {
+        Logger.getLogger(getClass().getName()).log(Level.SEVERE, "ALV AQUI EN EL EQUALS");
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Marca)) {
             return false;
         }
         Marca other = (Marca) object;
-        if ((this.idMarca == null && other.idMarca != null) || (this.idMarca != null && !this.idMarca.equals(other.idMarca))) {
-            return false;
-        }
-        return true;
+        return !((this.idMarca == null && other.idMarca != null) || (this.idMarca != null && !this.idMarca.equals(other.idMarca))
+                || (this.nombre != null && !this.nombre.equals(other.nombre)));
     }
 
     @Override

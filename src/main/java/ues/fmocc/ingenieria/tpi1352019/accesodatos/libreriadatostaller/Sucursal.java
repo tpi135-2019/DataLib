@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author kevin
  */
 @Entity
-@Table(name = "sucursal", catalog = "taller", schema = "")
+@Table(name = "sucursal")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Sucursal.findAll", query = "SELECT s FROM Sucursal s")
@@ -134,10 +134,8 @@ public class Sucursal implements Serializable {
             return false;
         }
         Sucursal other = (Sucursal) object;
-        if ((this.idSucursal == null && other.idSucursal != null) || (this.idSucursal != null && !this.idSucursal.equals(other.idSucursal))) {
-            return false;
-        }
-        return true;
+        return !((this.idSucursal == null && other.idSucursal != null) || (this.idSucursal != null && !this.idSucursal.equals(other.idSucursal))
+                || (!this.nombre.isEmpty() && !this.nombre.equals(other.nombre)));
     }
 
     @Override

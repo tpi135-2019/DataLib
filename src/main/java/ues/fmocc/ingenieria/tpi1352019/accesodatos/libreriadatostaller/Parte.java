@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author kevin
  */
 @Entity
-@Table(name = "parte", catalog = "taller", schema = "")
+@Table(name = "parte")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Parte.findAll", query = "SELECT p FROM Parte p")
@@ -116,10 +116,8 @@ public class Parte implements Serializable {
             return false;
         }
         Parte other = (Parte) object;
-        if ((this.idParte == null && other.idParte != null) || (this.idParte != null && !this.idParte.equals(other.idParte))) {
-            return false;
-        }
-        return true;
+        return !((this.idParte == null && other.idParte != null) || (this.idParte != null && !this.idParte.equals(other.idParte))
+                || (!this.nombre.isEmpty() && !this.nombre.equals(other.nombre)));
     }
 
     @Override
