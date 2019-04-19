@@ -22,6 +22,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -48,11 +50,14 @@ public class Reparacion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_reparacion", nullable = false)
+    @javax.validation.constraints.NotNull(message = "Identificador no debe ser nulo")
     private Integer idReparacion;
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
+    @Past(message = "Fecha de reparacion no puede exceder al periodo actual")
     private Date fecha;
     @Column(name = "observacion", length = 200)
+    @Size(min = 10)
     private String observacion;
     @ManyToMany(mappedBy = "reparacionCollection")
     private Collection<PasoProceso> pasoProcesoCollection;

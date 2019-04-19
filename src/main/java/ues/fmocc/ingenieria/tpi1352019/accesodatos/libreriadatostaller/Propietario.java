@@ -16,6 +16,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -39,16 +42,20 @@ public class Propietario implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "id_propietario", nullable = false)
+    @javax.validation.constraints.NotNull(message = "Identificador no debe ser nulo")
     private Integer idPropietario;
     @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 45)
+    @NotBlank(message = "Introdusca un nombre de propietario")
     private String nombre;
     @Basic(optional = false)
     @Column(name = "apellido", nullable = false, length = 45)
     private String apellido;
     @Column(name = "direccion", length = 200)
+    @Size(min = 10)
     private String direccion;
     @Column(name = "telefono", length = 45)
+    @Pattern(regexp = "[0-9]{4}-[0-9]{4}",message = "Introdusca un numero de telefono correcto")
     private String telefono;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPropietario")
     private Collection<Vehiculo> vehiculoCollection;

@@ -20,6 +20,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -42,9 +43,11 @@ public class Proceso implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_proceso", nullable = false)
+    @javax.validation.constraints.NotNull(message = "Identificador no debe ser nulo")
     private Integer idProceso;
     @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 45)
+    @NotEmpty(message = "Ingrese un proceso")
     private String nombre;
     @Column(name = "activo")
     private Boolean activo;

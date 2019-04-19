@@ -21,6 +21,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -44,9 +45,11 @@ public class Especialidad implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_especialidad", nullable = false)
+    @javax.validation.constraints.NotNull(message = "identificador no puede ser nulo")
     private Integer idEspecialidad;
     @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 45)
+    @NotBlank(message = "por favor agregue una especialidad")
     private String nombre;
     @Column(name = "descripcion", length = 200)
     private String descripcion;

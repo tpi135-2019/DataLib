@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -42,9 +43,11 @@ public class Paso implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_paso", nullable = false)
+    @javax.validation.constraints.NotNull(message = "Identificador no debe ser nulo")
     private Integer idPaso;
     @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 45)
+    @NotBlank(message = "agregue un nombre al paso")
     private String nombre;
     @Column(name = "activo")
     private Boolean activo;
@@ -121,12 +124,12 @@ public class Paso implements Serializable {
         }
         Paso other = (Paso) object;
         return !((this.idPaso == null && other.idPaso != null) || (this.idPaso != null && !this.idPaso.equals(other.idPaso))
-               || (this.nombre != null && !this.nombre.equals(other.getNombre())));
+                || (this.nombre != null && !this.nombre.equals(other.getNombre())));
     }
 
     @Override
     public String toString() {
         return "ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.Paso[ idPaso=" + idPaso + " ]";
     }
-    
+
 }

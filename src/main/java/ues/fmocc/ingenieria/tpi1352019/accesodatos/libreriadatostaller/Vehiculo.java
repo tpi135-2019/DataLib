@@ -18,6 +18,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -43,6 +46,7 @@ public class Vehiculo implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "id_vehiculo", nullable = false, length = 20)
+    @NotBlank(message = "Ingrese un numero de placa")
     private String idVehiculo;
     @Basic(optional = false)
     @Column(name = "numero_chasis", nullable = false, length = 17)

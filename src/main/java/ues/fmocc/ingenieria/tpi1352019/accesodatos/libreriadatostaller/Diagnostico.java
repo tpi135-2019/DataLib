@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -23,6 +23,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Past;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -46,13 +47,16 @@ public class Diagnostico implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_diagnostico", nullable = false)
+    @javax.validation.constraints.NotNull(message = "identificador no puede ser nulo")
     private Integer idDiagnostico;
     @Basic(optional = false)
     @Column(name = "diagnostico", nullable = false, length = 200)
+    @javax.validation.constraints.NotBlank(message = "Introdusca un diagnostico")
     private String diagnostico;
     @Basic(optional = false)
     @Column(name = "fecha", nullable = false)
     @Temporal(TemporalType.DATE)
+    @Past(message = "Fecha no puede exceder a la actual")
     private Date fecha;
     @JoinColumn(name = "id_vehiculo", referencedColumnName = "id_vehiculo", nullable = false)
     @ManyToOne(optional = false)

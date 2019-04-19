@@ -23,6 +23,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Past;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -49,15 +51,18 @@ public class Personal implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_mecanico", nullable = false)
+    @javax.validation.constraints.NotNull(message = "Identificador no debe ser nulo")
     private Integer idMecanico;
     @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 45)
+    @NotEmpty(message = "Ingrese un nombre")
     private String nombre;
     @Basic(optional = false)
     @Column(name = "apellido", nullable = false, length = 45)
     private String apellido;
     @Column(name = "fecha_contratacion")
     @Temporal(TemporalType.DATE)
+    @Past(message = "La fecha de contratacion no puede exceder a la fecha actual")
     private Date fechaContratacion;
     @Column(name = "activo")
     private Boolean activo;
@@ -175,5 +180,5 @@ public class Personal implements Serializable {
     public String toString() {
         return "ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.Personal[ idMecanico=" + idMecanico + " ]";
     }
-    
+
 }
