@@ -129,10 +129,8 @@ public class SubParte implements Serializable {
             return false;
         }
         SubParte other = (SubParte) object;
-        if ((this.idSubParte == null && other.idSubParte != null) || (this.idSubParte != null && !this.idSubParte.equals(other.idSubParte))) {
-            return false;
-        }
-        return true;
+        return !((this.idSubParte == null && other.idSubParte != null) || (this.idSubParte != null && !this.idSubParte.equals(other.idSubParte))
+                   || (this.nombre != null && !this.nombre.equals(other.getNombre())));
     }
 
     @Override

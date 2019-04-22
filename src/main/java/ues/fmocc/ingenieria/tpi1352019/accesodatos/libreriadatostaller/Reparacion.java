@@ -70,6 +70,12 @@ public class Reparacion implements Serializable {
     public Reparacion(Integer idReparacion) {
         this.idReparacion = idReparacion;
     }
+    
+     public Reparacion(Integer idReparacion, Date fecha, String observacion) {
+        this.idReparacion = idReparacion;
+        this.fecha = fecha;
+        this.observacion = observacion;
+    }
 
     public Integer getIdReparacion() {
         return idReparacion;
@@ -144,10 +150,9 @@ public class Reparacion implements Serializable {
             return false;
         }
         Reparacion other = (Reparacion) object;
-        if ((this.idReparacion == null && other.idReparacion != null) || (this.idReparacion != null && !this.idReparacion.equals(other.idReparacion))) {
-            return false;
-        }
-        return true;
+        return !((this.idReparacion == null && other.idReparacion != null) || (this.idReparacion != null && !this.idReparacion.equals(other.idReparacion))
+                || (this.observacion != null && !this.observacion.equals(other.observacion)));
+
     }
 
     @Override

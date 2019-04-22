@@ -128,10 +128,8 @@ public class Diagnostico implements Serializable {
             return false;
         }
         Diagnostico other = (Diagnostico) object;
-        if ((this.idDiagnostico == null && other.idDiagnostico != null) || (this.idDiagnostico != null && !this.idDiagnostico.equals(other.idDiagnostico))) {
-            return false;
-        }
-        return true;
+        return !((this.idDiagnostico == null && other.idDiagnostico != null) || (this.idDiagnostico != null && !this.idDiagnostico.equals(other.idDiagnostico))
+                || (this.diagnostico != null && !this.diagnostico.equals(other.diagnostico)));
     }
 
     @Override

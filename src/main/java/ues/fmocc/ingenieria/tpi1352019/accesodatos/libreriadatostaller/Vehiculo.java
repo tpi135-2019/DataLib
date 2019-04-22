@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Vehiculo.findByNumeroMotor", query = "SELECT v FROM Vehiculo v WHERE v.numeroMotor = :numeroMotor")
     , @NamedQuery(name = "Vehiculo.findByVin", query = "SELECT v FROM Vehiculo v WHERE v.vin = :vin")
     , @NamedQuery(name = "Vehiculo.findByColor", query = "SELECT v FROM Vehiculo v WHERE v.color = :color")
-    , @NamedQuery(name= "Vehiculo.HistorialPropietarios", query = "SELECT p FROM HistorialPropietario h, Propietario p WHERE h.idPropietario = p.idPropietario AND UPPER(h.idVehiculo) = UPPER(:placa)")
+    , @NamedQuery(name = "Vehiculo.HistorialPropietarios", query = "SELECT p FROM HistorialPropietario h, Propietario p WHERE h.idPropietario = p.idPropietario AND UPPER(h.idVehiculo) = UPPER(:placa)")
 })
 public class Vehiculo implements Serializable {
 
@@ -157,15 +157,14 @@ public class Vehiculo implements Serializable {
             return false;
         }
         Vehiculo other = (Vehiculo) object;
-        if ((this.idVehiculo == null && other.idVehiculo != null) || (this.idVehiculo != null && !this.idVehiculo.equals(other.idVehiculo))) {
-            return false;
-        }
-        return true;
+        return !((this.idVehiculo == null && other.idVehiculo != null) || (this.idVehiculo != null && !this.idVehiculo.equals(other.idVehiculo))
+                || (this.vin != null && !this.vin.equals(other.vin)));
+
     }
 
     @Override
     public String toString() {
         return "ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.Vehiculo[ idVehiculo=" + idVehiculo + " ]";
     }
-    
+
 }

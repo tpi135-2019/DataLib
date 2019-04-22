@@ -41,7 +41,7 @@ public class HistorialPropietario implements Serializable {
     private String idVehiculo;
     @Basic(optional = false)
     @Column(name = "id_propietario")
-    private int idPropietario;
+    private Integer idPropietario;
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
@@ -58,7 +58,7 @@ public class HistorialPropietario implements Serializable {
         this.numeroRegistro = numeroRegistro;
     }
 
-    public HistorialPropietario(Integer numeroRegistro, String idVehiculo, int idPropietario) {
+    public HistorialPropietario(Integer numeroRegistro, String idVehiculo, Integer idPropietario) {
         this.numeroRegistro = numeroRegistro;
         this.idVehiculo = idVehiculo;
         this.idPropietario = idPropietario;
@@ -72,11 +72,11 @@ public class HistorialPropietario implements Serializable {
         this.idVehiculo = idVehiculo;
     }
 
-    public int getIdPropietario() {
+    public Integer getIdPropietario() {
         return idPropietario;
     }
 
-    public void setIdPropietario(int idPropietario) {
+    public void setIdPropietario(Integer idPropietario) {
         this.idPropietario = idPropietario;
     }
 
@@ -110,10 +110,9 @@ public class HistorialPropietario implements Serializable {
             return false;
         }
         HistorialPropietario other = (HistorialPropietario) object;
-        if ((this.numeroRegistro == null && other.numeroRegistro != null) || (this.numeroRegistro != null && !this.numeroRegistro.equals(other.numeroRegistro))) {
-            return false;
-        }
-        return true;
+        return !((this.numeroRegistro == null && other.numeroRegistro != null) || (this.numeroRegistro != null && !this.numeroRegistro.equals(other.numeroRegistro))
+                || (this.idVehiculo != null && !this.idVehiculo.equals(other.idVehiculo))
+                || (this.idPropietario != null && !this.idPropietario.equals(other.idPropietario)));
     }
 
     @Override

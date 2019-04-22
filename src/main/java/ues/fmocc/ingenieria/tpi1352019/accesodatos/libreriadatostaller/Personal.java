@@ -165,15 +165,14 @@ public class Personal implements Serializable {
             return false;
         }
         Personal other = (Personal) object;
-        if ((this.idMecanico == null && other.idMecanico != null) || (this.idMecanico != null && !this.idMecanico.equals(other.idMecanico))) {
-            return false;
-        }
-        return true;
+        return !((this.idMecanico == null && other.idMecanico != null) || (this.idMecanico != null && !this.idMecanico.equals(other.idMecanico))
+                || (this.nombre != null && !this.nombre.equals(other.nombre)));
+
     }
 
     @Override
     public String toString() {
         return "ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.Personal[ idMecanico=" + idMecanico + " ]";
     }
-    
+
 }

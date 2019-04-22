@@ -121,15 +121,14 @@ public class Proceso implements Serializable {
             return false;
         }
         Proceso other = (Proceso) object;
-        if ((this.idProceso == null && other.idProceso != null) || (this.idProceso != null && !this.idProceso.equals(other.idProceso))) {
-            return false;
-        }
-        return true;
+        return !((this.idProceso == null && other.idProceso != null) || (this.idProceso != null && !this.idProceso.equals(other.idProceso))
+                || (this.nombre != null && !this.nombre.equals(other.nombre)));
+
     }
 
     @Override
     public String toString() {
         return "ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.Proceso[ idProceso=" + idProceso + " ]";
     }
-    
+
 }

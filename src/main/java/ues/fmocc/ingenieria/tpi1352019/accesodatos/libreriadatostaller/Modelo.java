@@ -132,10 +132,8 @@ public class Modelo implements Serializable {
             return false;
         }
         Modelo other = (Modelo) object;
-        if ((this.idModelo == null && other.idModelo != null) || (this.idModelo != null && !this.idModelo.equals(other.idModelo))) {
-            return false;
-        }
-        return true;
+        return !((this.idModelo == null && other.idModelo != null) || (this.idModelo != null && !this.idModelo.equals(other.idModelo))
+                || (this.nombre != null && !this.nombre.equals(other.nombre)));
     }
 
     @Override

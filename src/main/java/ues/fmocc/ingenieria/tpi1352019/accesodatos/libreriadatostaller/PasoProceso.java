@@ -44,7 +44,7 @@ public class PasoProceso implements Serializable {
     private Integer idPasoProceso;
     @Basic(optional = false)
     @Column(name = "numero_paso", nullable = false)
-    private int numeroPaso;
+    private Integer numeroPaso;
     @JoinTable(name = "paso_reparacion", joinColumns = {
         @JoinColumn(name = "id_paso_proceso", referencedColumnName = "id_paso_proceso", nullable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "id_reparacion", referencedColumnName = "id_reparacion", nullable = false)})
@@ -77,11 +77,11 @@ public class PasoProceso implements Serializable {
         this.idPasoProceso = idPasoProceso;
     }
 
-    public int getNumeroPaso() {
+    public Integer getNumeroPaso() {
         return numeroPaso;
     }
 
-    public void setNumeroPaso(int numeroPaso) {
+    public void setNumeroPaso(Integer numeroPaso) {
         this.numeroPaso = numeroPaso;
     }
 
@@ -124,15 +124,14 @@ public class PasoProceso implements Serializable {
             return false;
         }
         PasoProceso other = (PasoProceso) object;
-        if ((this.idPasoProceso == null && other.idPasoProceso != null) || (this.idPasoProceso != null && !this.idPasoProceso.equals(other.idPasoProceso))) {
-            return false;
-        }
-        return true;
+        return !((this.idPasoProceso == null && other.idPasoProceso != null) || (this.idPasoProceso != null && !this.idPasoProceso.equals(other.idPasoProceso))
+                || (this.idPaso != null && !this.idPaso.equals(other.idPaso)) 
+                || (this.numeroPaso != null && !this.numeroPaso.equals(other.numeroPaso)));
     }
 
     @Override
     public String toString() {
         return "ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.PasoProceso[ idPasoProceso=" + idPasoProceso + " ]";
     }
-    
+
 }

@@ -133,15 +133,14 @@ public class Pieza implements Serializable {
             return false;
         }
         Pieza other = (Pieza) object;
-        if ((this.idPieza == null && other.idPieza != null) || (this.idPieza != null && !this.idPieza.equals(other.idPieza))) {
-            return false;
-        }
-        return true;
+        return !((this.idPieza == null && other.idPieza != null) || (this.idPieza != null && !this.idPieza.equals(other.idPieza))
+                || (this.nombre != null && !this.nombre.equals(other.nombre)));
+
     }
 
     @Override
     public String toString() {
         return "ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.Pieza[ idPieza=" + idPieza + " ]";
     }
-    
+
 }
