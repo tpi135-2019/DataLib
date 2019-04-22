@@ -41,6 +41,7 @@ public class PasoProceso implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_paso_proceso", nullable = false)
+    @javax.validation.constraints.NotNull(message = "Identificador no debe ser nulo")
     private Integer idPasoProceso;
     @Basic(optional = false)
     @Column(name = "numero_paso", nullable = false)

@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -41,13 +42,16 @@ public class Pieza implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "id_pieza", nullable = false)
+    @javax.validation.constraints.NotNull(message = "Identificador no debe ser nulo")
     private Integer idPieza;
     @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 45)
+    @NotEmpty(message = "Ingrese el nombre de la pieza")
     private String nombre;
     @Column(name = "activo")
     private Boolean activo;
     @Column(name = "observacion", length = 200)
+    @javax.validation.constraints.Size(min = 5)
     private String observacion;
     @JoinTable(name = "pieza_reparacion", joinColumns = {
         @JoinColumn(name = "id_pieza", referencedColumnName = "id_pieza", nullable = false)}, inverseJoinColumns = {

@@ -20,6 +20,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -43,9 +44,11 @@ public class Marca implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_marca", nullable = false)
+    @javax.validation.constraints.NotNull(message = "identificador no puede ser nulo")
     private Integer idMarca;
     @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 45)
+    @NotEmpty(message = "Ingrese una Marca")
     private String nombre;
     @Column(name = "descripcion", length = 200)
     private String descripcion;

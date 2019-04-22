@@ -20,6 +20,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -42,11 +45,15 @@ public class Modelo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_modelo", nullable = false)
+    @javax.validation.constraints.NotNull(message = "identificador no puede ser nulo")
     private Integer idModelo;
     @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 45)
+    @NotEmpty(message = "Ingrese un modelo")
+    @NotNull
     private String nombre;
     @Column(name = "anyo", length = 4)
+    @javax.validation.constraints.Pattern(regexp = "[1-2]{1}[0-9]{3}",message = "Ingrese un año válido")
     private String anyo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idModelo")
     private Collection<Vehiculo> vehiculoCollection;

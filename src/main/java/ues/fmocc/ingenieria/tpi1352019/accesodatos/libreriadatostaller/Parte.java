@@ -16,6 +16,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -38,9 +40,12 @@ public class Parte implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "id_parte", nullable = false)
+    @javax.validation.constraints.NotNull(message = "Identificador no debe ser nulo")
     private Integer idParte;
     @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 45)
+    @NotNull
+    @NotEmpty(message = "Ingrese el nombre de la parte")
     private String nombre;
     @Column(name = "activo")
     private Boolean activo;

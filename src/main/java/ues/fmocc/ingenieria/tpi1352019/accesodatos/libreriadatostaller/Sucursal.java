@@ -18,6 +18,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -46,15 +49,18 @@ public class Sucursal implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_sucursal", nullable = false)
+    @javax.validation.constraints.NotNull(message = "Identificador no debe ser nulo")
     private Integer idSucursal;
     @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 45)
+    @NotBlank(message = "Ingrese el nombre del Taller")
     private String nombre;
     @Column(name = "direccion", length = 200)
     private String direccion;
     @Column(name = "activo")
     private Boolean activo;
     @Column(name = "telefono", length = 45)
+    @Pattern(regexp = "[0-9]{4}-[0-9]{4}",message = "Introdusca un numero telefonico correcto")
     private String telefono;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSucursal")
     private Collection<Personal> personalCollection;
