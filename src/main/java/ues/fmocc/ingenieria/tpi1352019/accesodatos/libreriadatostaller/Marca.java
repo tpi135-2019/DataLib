@@ -44,7 +44,6 @@ public class Marca implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_marca", nullable = false)
-    @javax.validation.constraints.NotNull(message = "identificador no puede ser nulo")
     private Integer idMarca;
     @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 45)

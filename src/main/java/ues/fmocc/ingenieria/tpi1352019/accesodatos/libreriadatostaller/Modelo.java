@@ -45,7 +45,6 @@ public class Modelo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_modelo", nullable = false)
-    @javax.validation.constraints.NotNull(message = "identificador no puede ser nulo")
     private Integer idModelo;
     @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 45)

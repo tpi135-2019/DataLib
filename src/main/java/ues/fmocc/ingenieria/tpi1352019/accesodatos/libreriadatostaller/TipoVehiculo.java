@@ -43,7 +43,6 @@ public class TipoVehiculo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_tipo_vehiculo", nullable = false)
-    @javax.validation.constraints.NotNull(message = "Identificador no debe ser nulo")
     private Integer idTipoVehiculo;
     @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 45)

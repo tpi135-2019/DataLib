@@ -10,6 +10,8 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -40,9 +42,9 @@ public class Pieza implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_pieza", nullable = false)
-    @javax.validation.constraints.NotNull(message = "Identificador no debe ser nulo")
     private Integer idPieza;
     @Basic(optional = false)
     @Column(name = "nombre", nullable = false, length = 45)

@@ -50,7 +50,6 @@ public class Reparacion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_reparacion", nullable = false)
-    @javax.validation.constraints.NotNull(message = "Identificador no debe ser nulo")
     private Integer idReparacion;
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
