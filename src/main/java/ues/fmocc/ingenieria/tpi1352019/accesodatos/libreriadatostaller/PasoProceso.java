@@ -33,7 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "PasoProceso.findAll", query = "SELECT p FROM PasoProceso p")
     , @NamedQuery(name = "PasoProceso.findByIdPasoProceso", query = "SELECT p FROM PasoProceso p WHERE p.idPasoProceso = :idPasoProceso")
-    , @NamedQuery(name = "PasoProceso.findByNumeroPaso", query = "SELECT p FROM PasoProceso p WHERE p.numeroPaso = :numeroPaso")})
+    , @NamedQuery(name = "PasoProceso.findByNumeroPaso", query = "SELECT p FROM PasoProceso p WHERE p.numeroPaso = :numeroPaso")
+    , @NamedQuery(name = "PasoProceso.findByProceso", query = "SELECT p FROM PasoProceso p  WHERE p.idProceso.idProceso = :idProceso ORDER BY p.numeroPaso")})
 public class PasoProceso implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -64,7 +64,7 @@ public class Reparacion implements Serializable {
     @JoinTable(name = "paso_reparacion", joinColumns = {
         @JoinColumn(name = "id_reparacion", referencedColumnName = "id_reparacion", nullable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "id_paso_proceso", referencedColumnName = "id_paso_proceso", nullable = false)})
-    @ManyToMany(mappedBy = "reparacionCollection")
+    @ManyToMany
     private Collection<PasoProceso> pasoProcesoCollection;
     
     @JoinTable(name = "pieza_reparacion", joinColumns = {
