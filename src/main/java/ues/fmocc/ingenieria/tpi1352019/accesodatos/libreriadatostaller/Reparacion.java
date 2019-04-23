@@ -9,12 +9,14 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -58,12 +60,25 @@ public class Reparacion implements Serializable {
     @Column(name = "observacion", length = 200)
     @Size(min = 10)
     private String observacion;
+    
+    @JoinTable(name = "paso_reparacion", joinColumns = {
+        @JoinColumn(name = "id_reparacion", referencedColumnName = "id_reparacion", nullable = false)}, inverseJoinColumns = {
+        @JoinColumn(name = "id_paso_proceso", referencedColumnName = "id_paso_proceso", nullable = false)})
     @ManyToMany(mappedBy = "reparacionCollection")
     private Collection<PasoProceso> pasoProcesoCollection;
-    @ManyToMany(mappedBy = "reparacionCollection")
+    
+    @JoinTable(name = "pieza_reparacion", joinColumns = {
+        @JoinColumn(name = "id_reparacion", referencedColumnName = "id_reparacion", nullable = false)}, inverseJoinColumns = {
+        @JoinColumn(name = "id_pieza", referencedColumnName = "id_pieza", nullable = false)})
+    @ManyToMany
     private Collection<Pieza> piezaCollection;
-    @ManyToMany(mappedBy = "reparacionCollection")
+    
+    @JoinTable(name = "personal_reparacion", joinColumns = {
+        @JoinColumn(name = "id_reparacion", referencedColumnName = "id_reparacion", nullable = false)}, inverseJoinColumns = {
+        @JoinColumn(name = "id_mecanico", referencedColumnName = "id_mecanico", nullable = false)})
+    @ManyToMany
     private Collection<Personal> personalCollection;
+    
     @JoinColumn(name = "id_diagnostico", referencedColumnName = "id_diagnostico", nullable = false)
     @ManyToOne(optional = false)
     private Diagnostico idDiagnostico;

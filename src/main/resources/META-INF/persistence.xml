@@ -20,10 +20,10 @@
     <class>ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.TipoVehiculo</class>
     <class>ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.Vehiculo</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://172.17.0.2:3306/taller?zeroDateTimeBehavior=convertToNull"/>
-      <property name="javax.persistence.jdbc.user" value="cmansky"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3305/taller"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="pass"/>
+      <property name="javax.persistence.jdbc.password" value="12345"/>
     </properties>
   </persistence-unit>
 </persistence>

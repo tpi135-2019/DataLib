@@ -8,6 +8,7 @@ package ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -55,10 +56,7 @@ public class Pieza implements Serializable {
     @Column(name = "observacion", length = 200)
     @javax.validation.constraints.Size(min = 5)
     private String observacion;
-    @JoinTable(name = "pieza_reparacion", joinColumns = {
-        @JoinColumn(name = "id_pieza", referencedColumnName = "id_pieza", nullable = false)}, inverseJoinColumns = {
-        @JoinColumn(name = "id_reparacion", referencedColumnName = "id_reparacion", nullable = false)})
-    @ManyToMany
+    @ManyToMany(mappedBy = "piezaCollection" )
     private Collection<Reparacion> reparacionCollection;
     @JoinColumn(name = "id_sub_parte", referencedColumnName = "id_sub_parte", nullable = false)
     @ManyToOne(optional = false)

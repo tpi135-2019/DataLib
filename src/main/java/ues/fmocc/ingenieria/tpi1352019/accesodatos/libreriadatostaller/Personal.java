@@ -65,12 +65,12 @@ public class Personal implements Serializable {
     private Date fechaContratacion;
     @Column(name = "activo")
     private Boolean activo;
-    @ManyToMany(mappedBy = "personalCollection")
-    private Collection<Especialidad> especialidadCollection;
-    @JoinTable(name = "personal_reparacion", joinColumns = {
+    @JoinTable(name = "personal_especialidad", joinColumns = {
         @JoinColumn(name = "id_mecanico", referencedColumnName = "id_mecanico", nullable = false)}, inverseJoinColumns = {
-        @JoinColumn(name = "id_reparacion", referencedColumnName = "id_reparacion", nullable = false)})
+        @JoinColumn(name = "id_especialidad", referencedColumnName = "id_especialidad", nullable = false)})
     @ManyToMany
+    private Collection<Especialidad> especialidadCollection;
+    @ManyToMany(mappedBy = "personalCollection")
     private Collection<Reparacion> reparacionCollection;
     @JoinColumn(name = "id_sucursal", referencedColumnName = "id_sucursal", nullable = false)
     @ManyToOne(optional = false)

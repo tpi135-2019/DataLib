@@ -54,10 +54,7 @@ public class Especialidad implements Serializable {
     private String descripcion;
     @Column(name = "activo")
     private Boolean activo;
-    @JoinTable(name = "personal_especialidad", joinColumns = {
-        @JoinColumn(name = "id_especialidad", referencedColumnName = "id_especialidad", nullable = false)}, inverseJoinColumns = {
-        @JoinColumn(name = "id_mecanico", referencedColumnName = "id_mecanico", nullable = false)})
-    @ManyToMany
+    @ManyToMany(mappedBy = "especialidadCollection")
     private Collection<Personal> personalCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEspecialidad")
     private Collection<Proceso> procesoCollection;
