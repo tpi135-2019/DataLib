@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -101,6 +102,7 @@ public class Marca implements Serializable {
     }
 
     @XmlTransient
+    @JsonbTransient
     public Collection<Modelo> getModeloCollection() {
         return modeloCollection;
     }

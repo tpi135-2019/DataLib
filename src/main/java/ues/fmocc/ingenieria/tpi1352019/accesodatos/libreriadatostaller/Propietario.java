@@ -7,6 +7,7 @@ package ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller;
 
 import java.io.Serializable;
 import java.util.Collection;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -114,6 +115,7 @@ public class Propietario implements Serializable {
     }
 
     @XmlTransient
+    @JsonbTransient
     public Collection<Vehiculo> getVehiculoCollection() {
         return vehiculoCollection;
     }

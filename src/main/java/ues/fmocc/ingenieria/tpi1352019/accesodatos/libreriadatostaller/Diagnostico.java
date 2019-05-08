@@ -8,6 +8,7 @@ package ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -109,6 +110,7 @@ public class Diagnostico implements Serializable {
     }
 
     @XmlTransient
+    @JsonbTransient
     public Collection<Reparacion> getReparacionCollection() {
         return reparacionCollection;
     }

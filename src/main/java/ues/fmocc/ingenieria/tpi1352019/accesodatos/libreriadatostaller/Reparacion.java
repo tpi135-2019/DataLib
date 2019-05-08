@@ -8,6 +8,7 @@ package ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -121,6 +122,7 @@ public class Reparacion implements Serializable {
     }
 
     @XmlTransient
+    @JsonbTransient
     public Collection<PasoProceso> getPasoProcesoCollection() {
         return pasoProcesoCollection;
     }
@@ -130,6 +132,7 @@ public class Reparacion implements Serializable {
     }
 
     @XmlTransient
+    @JsonbTransient
     public Collection<Pieza> getPiezaCollection() {
         return piezaCollection;
     }
@@ -139,6 +142,7 @@ public class Reparacion implements Serializable {
     }
 
     @XmlTransient
+    @JsonbTransient
     public Collection<Personal> getPersonalCollection() {
         return personalCollection;
     }

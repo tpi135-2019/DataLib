@@ -7,6 +7,7 @@ package ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller;
 
 import java.io.Serializable;
 import java.util.Collection;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -104,6 +105,7 @@ public class Especialidad implements Serializable {
     }
 
     @XmlTransient
+    @JsonbTransient
     public Collection<Personal> getPersonalCollection() {
         return personalCollection;
     }
@@ -113,6 +115,7 @@ public class Especialidad implements Serializable {
     }
 
     @XmlTransient
+    @JsonbTransient
     public Collection<Proceso> getProcesoCollection() {
         return procesoCollection;
     }
@@ -143,5 +146,5 @@ public class Especialidad implements Serializable {
     public String toString() {
         return "ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.Especialidad[ idEspecialidad=" + idEspecialidad + " ]";
     }
-    
+
 }
