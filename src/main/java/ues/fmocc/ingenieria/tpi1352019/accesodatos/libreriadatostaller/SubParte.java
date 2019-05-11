@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "SubParte.findAll", query = "SELECT s FROM SubParte s")
     , @NamedQuery(name = "SubParte.findByIdSubParte", query = "SELECT s FROM SubParte s WHERE s.idSubParte = :idSubParte")
     , @NamedQuery(name = "SubParte.findByNombre", query = "SELECT s FROM SubParte s WHERE s.nombre = :nombre")
+    , @NamedQuery(name = "SubParte.subparte.parte", query = "SELECT t FROM SubParte t WHERE t.idParte.nombre like UPPER(':name%')")
     , @NamedQuery(name = "SubParte.findByActivo", query = "SELECT s FROM SubParte s WHERE s.activo = :activo")
     , @NamedQuery(name = "SubParte.findByDescripcion", query = "SELECT s FROM SubParte s WHERE s.descripcion = :descripcion")})
 public class SubParte implements Serializable {

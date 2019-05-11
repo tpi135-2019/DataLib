@@ -23,7 +23,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -36,9 +35,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Modelo.findAll", query = "SELECT m FROM Modelo m")
-    , @NamedQuery(name = "Modelo.findByIdModelo", query = "SELECT m FROM Modelo m WHERE m.idModelo = :idModelo")
-    , @NamedQuery(name = "Modelo.findByNombre", query = "SELECT m FROM Modelo m WHERE m.nombre = :nombre")
-    , @NamedQuery(name = "Modelo.findByAnyo", query = "SELECT m FROM Modelo m WHERE m.anyo = :anyo")})
+    ,@NamedQuery(name = "Modelo.findByIdModelo", query = "SELECT m FROM Modelo m WHERE m.idModelo = :idModelo")
+    ,@NamedQuery(name = "Modelo.Modelo.Marca", query = "SELECT t FROM Modelo t WHERE t.idMarca.nombre like UPPER(':name %')")
+    ,@NamedQuery(name = "Modelo.findByNombre", query = "SELECT m FROM Modelo m WHERE m.nombre = :nombre")
+    ,@NamedQuery(name = "Modelo.findByAnyo", query = "SELECT m FROM Modelo m WHERE m.anyo = :anyo")})
 public class Modelo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,7 +53,7 @@ public class Modelo implements Serializable {
     @NotNull
     private String nombre;
     @Column(name = "anyo", length = 4)
-    @javax.validation.constraints.Pattern(regexp = "[1-2]{1}[0-9]{3}",message = "Ingrese un año válido")
+    @javax.validation.constraints.Pattern(regexp = "[1-2]{1}[0-9]{3}", message = "Ingrese un año válido")
     private String anyo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idModelo")
     private Collection<Vehiculo> vehiculoCollection;
@@ -148,5 +148,5 @@ public class Modelo implements Serializable {
     public String toString() {
         return "ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.Modelo[ idModelo=" + idModelo + " ]";
     }
-    
+
 }
