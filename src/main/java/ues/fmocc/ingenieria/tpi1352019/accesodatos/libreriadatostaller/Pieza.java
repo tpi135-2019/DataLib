@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Pieza.findAll", query = "SELECT p FROM Pieza p")
     , @NamedQuery(name = "Pieza.findByIdPieza", query = "SELECT p FROM Pieza p WHERE p.idPieza = :idPieza")
     , @NamedQuery(name = "Pieza.findByNombre", query = "SELECT p FROM Pieza p WHERE p.nombre = :nombre")
-    , @NamedQuery(name = "Pieza.pieza.subParte",query = "SELECT t FROM Pieza t WHERE t.idSubParte.nombre like UPPER(':name %')")
+    , @NamedQuery(name = "Pieza.pieza.subParte",query = "SELECT t FROM Pieza t WHERE t.idSubParte.nombre like CONCAT('%', :name, '%')")
     , @NamedQuery(name = "Pieza.Reparacion", query = "SELECT t FROM Pieza t JOIN FETCH t.reparacionCollection repa where repa.idReparacion=:id")
     , @NamedQuery(name = "Pieza.findByActivo", query = "SELECT p FROM Pieza p WHERE p.activo = :activo")
     , @NamedQuery(name = "Pieza.findByObservacion", query = "SELECT p FROM Pieza p WHERE p.observacion = :observacion")})
