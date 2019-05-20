@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Propietario.findAll", query = "SELECT p FROM Propietario p")
+    , @NamedQuery(name = "Propietario.VehiculosPropietario", query = "SELECT t FROM Vehiculo t WHERE t.idPropietario.idPropietario = :idPropietario")
     , @NamedQuery(name = "Propietario.findByIdPropietario", query = "SELECT p FROM Propietario p WHERE p.idPropietario = :idPropietario")
     , @NamedQuery(name = "Propietario.findByNombre", query = "SELECT p FROM Propietario p WHERE p.nombre = :nombre")
     , @NamedQuery(name = "Propietario.findByApellido", query = "SELECT p FROM Propietario p WHERE p.apellido = :apellido")
@@ -56,7 +57,7 @@ public class Propietario implements Serializable {
     @Size(min = 10)
     private String direccion;
     @Column(name = "telefono", length = 45)
-    @Pattern(regexp = "[0-9]{4}-[0-9]{4}",message = "Introdusca un numero de telefono correcto")
+    @Pattern(regexp = "[0-9]{4}-[0-9]{4}", message = "Introdusca un numero de telefono correcto")
     private String telefono;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPropietario")
     private Collection<Vehiculo> vehiculoCollection;
@@ -139,12 +140,12 @@ public class Propietario implements Serializable {
         }
         Propietario other = (Propietario) object;
         return !((this.idPropietario == null && other.idPropietario != null) || (this.idPropietario != null && !this.idPropietario.equals(other.idPropietario))
-             || (this.nombre != null && !this.nombre.equals(other.getNombre())));
+                || (this.nombre != null && !this.nombre.equals(other.getNombre())));
     }
 
     @Override
     public String toString() {
         return "ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.Propietario[ idPropietario=" + idPropietario + " ]";
     }
-    
+
 }

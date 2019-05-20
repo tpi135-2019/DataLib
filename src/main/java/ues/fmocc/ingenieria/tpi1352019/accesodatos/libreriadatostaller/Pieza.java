@@ -36,6 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Pieza.findByIdPieza", query = "SELECT p FROM Pieza p WHERE p.idPieza = :idPieza")
     , @NamedQuery(name = "Pieza.findByNombre", query = "SELECT p FROM Pieza p WHERE p.nombre = :nombre")
     , @NamedQuery(name = "Pieza.pieza.subParte",query = "SELECT t FROM Pieza t WHERE t.idSubParte.nombre like CONCAT('%', :name, '%')")
+    , @NamedQuery(name = "Pieza.findBySubarteNombreLike", query = "SELECT p FROM Pieza p WHERE p.idSubParte.idSubParte = :idSubparte AND p.nombre LIKE CONCAT(:nombre ,'%')")
+    , @NamedQuery(name = "Pieza.findBySubParte", query = "SELECT p FROM Pieza p WHERE p.idSubParte.idSubParte = :idSubParte")
     , @NamedQuery(name = "Pieza.Reparacion", query = "SELECT t FROM Pieza t JOIN FETCH t.reparacionCollection repa where repa.idReparacion=:id")
     , @NamedQuery(name = "Pieza.findByActivo", query = "SELECT p FROM Pieza p WHERE p.activo = :activo")
     , @NamedQuery(name = "Pieza.findByObservacion", query = "SELECT p FROM Pieza p WHERE p.observacion = :observacion")})
@@ -56,7 +58,7 @@ public class Pieza implements Serializable {
     @Column(name = "observacion", length = 200)
     @javax.validation.constraints.Size(min = 5)
     private String observacion;
-    @ManyToMany(mappedBy = "piezaCollection" )
+    @ManyToMany(mappedBy = "piezaCollection")
     private Collection<Reparacion> reparacionCollection;
     @JoinColumn(name = "id_sub_parte", referencedColumnName = "id_sub_parte", nullable = false)
     @ManyToOne(optional = false)

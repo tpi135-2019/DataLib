@@ -37,7 +37,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "SubParte.findByIdSubParte", query = "SELECT s FROM SubParte s WHERE s.idSubParte = :idSubParte")
     , @NamedQuery(name = "SubParte.findByNombre", query = "SELECT s FROM SubParte s WHERE s.nombre = :nombre")
     , @NamedQuery(name = "SubParte.subparte.parte", query = "SELECT t FROM SubParte t WHERE t.idParte.nombre like CONCAT('%', :name, '%')")
-    , @NamedQuery(name = "SubParte.findByActivo", query = "SELECT s FROM SubParte s WHERE s.activo = :activo")
+    , @NamedQuery(name = "SubParte.findByidParteNombreLike", query = "SELECT s FROM SubParte s where s.idParte.idParte = :idParte AND s.nombre LIKE CONCAT(:nombre ,'%')")
+    ,@NamedQuery(name = "SubParte.findByActivo", query = "SELECT s FROM SubParte s WHERE s.activo = :activo")
     , @NamedQuery(name = "SubParte.findByDescripcion", query = "SELECT s FROM SubParte s WHERE s.descripcion = :descripcion")})
 public class SubParte implements Serializable {
 
@@ -138,12 +139,12 @@ public class SubParte implements Serializable {
         }
         SubParte other = (SubParte) object;
         return !((this.idSubParte == null && other.idSubParte != null) || (this.idSubParte != null && !this.idSubParte.equals(other.idSubParte))
-                   || (this.nombre != null && !this.nombre.equals(other.getNombre())));
+                || (this.nombre != null && !this.nombre.equals(other.getNombre())));
     }
 
     @Override
     public String toString() {
         return "ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.SubParte[ idSubParte=" + idSubParte + " ]";
     }
-    
+
 }
