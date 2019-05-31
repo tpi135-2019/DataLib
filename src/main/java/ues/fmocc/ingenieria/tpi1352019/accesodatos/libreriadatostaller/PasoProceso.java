@@ -15,7 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -35,7 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "PasoProceso.findAll", query = "SELECT p FROM PasoProceso p")
     , @NamedQuery(name = "PasoProceso.findByIdPasoProceso", query = "SELECT p FROM PasoProceso p WHERE p.idPasoProceso = :idPasoProceso")
     , @NamedQuery(name = "PasoProceso.findByNumeroPaso", query = "SELECT p FROM PasoProceso p WHERE p.numeroPaso = :numeroPaso")
-    , @NamedQuery(name = "PasoProceso.findByProceso", query = "SELECT ps FROM PasoProceso p JOIN p.idPaso ps WHERE p.idProceso.idProceso = :idProceso AND ps.nombre LIKE UPPER(':paso%') ORDER BY p.numeroPaso")})
+    , @NamedQuery(name = "PasoProceso.findPasosByProceso", query = "SELECT p FROM PasoProceso p JOIN p.idPaso ps WHERE p.idProceso.idProceso = :idProceso AND ps.nombre LIKE CONCAT(:paso, '%') ORDER BY p.numeroPaso")
+    , @NamedQuery(name = "PasoProceso.findByProceso", query = "SELECT ps FROM PasoProceso p JOIN p.idPaso ps WHERE p.idProceso.idProceso = :idProceso AND ps.nombre LIKE CONCAT(:paso, '%') ORDER BY p.numeroPaso")})
 public class PasoProceso implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -125,7 +125,7 @@ public class PasoProceso implements Serializable {
         }
         PasoProceso other = (PasoProceso) object;
         return !((this.idPasoProceso == null && other.idPasoProceso != null) || (this.idPasoProceso != null && !this.idPasoProceso.equals(other.idPasoProceso))
-                || (this.idPaso != null && !this.idPaso.equals(other.idPaso)) 
+                || (this.idPaso != null && !this.idPaso.equals(other.idPaso))
                 || (this.numeroPaso != null && !this.numeroPaso.equals(other.numeroPaso)));
     }
 
