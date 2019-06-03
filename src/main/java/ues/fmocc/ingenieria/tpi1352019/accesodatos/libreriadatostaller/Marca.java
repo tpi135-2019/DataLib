@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Marca.findAll", query = "SELECT m FROM Marca m")
     , @NamedQuery(name = "Marca.findByIdMarca", query = "SELECT m FROM Marca m WHERE m.idMarca = :idMarca")
     , @NamedQuery(name = "Marca.findByNombre", query = "SELECT m FROM Marca m WHERE m.nombre = :nombre")
+    , @NamedQuery(name = "Marca.findMarcaNombreLike", query = "SELECT m FROM Marca m WHERE m.nombre LIKE CONCAT(:nombre ,'%')")
     , @NamedQuery(name = "Marca.findByDescripcion", query = "SELECT m FROM Marca m WHERE m.descripcion = :descripcion")
     , @NamedQuery(name = "Marca.findByActivo", query = "SELECT m FROM Marca m WHERE m.activo = :activo")})
 public class Marca implements Serializable {
