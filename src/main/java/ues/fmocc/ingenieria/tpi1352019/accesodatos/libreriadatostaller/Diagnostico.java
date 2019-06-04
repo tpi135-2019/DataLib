@@ -38,6 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Diagnostico.findAll", query = "SELECT d FROM Diagnostico d")
     , @NamedQuery(name = "Diagnostico.findByIdDiagnostico", query = "SELECT d FROM Diagnostico d WHERE d.idDiagnostico = :idDiagnostico")
+    , @NamedQuery(name = "Diagnostico.findByIdDiagnosticoLike", query = "SELECT d FROM Diagnostico d WHERE d.idDiagnostico like CONCAT(:id, '%')")
     , @NamedQuery(name = "Diagnostico.findByDiagnostico", query = "SELECT d FROM Diagnostico d WHERE d.diagnostico = :diagnostico")
     ,@NamedQuery(name = "DiagnosticoPorPlaca",query = "SELECT t FROM Diagnostico t where t.idVehiculo.idVehiculo=:placa")
     ,@NamedQuery(name = "Diagnostico.findByFecha", query = "SELECT d FROM Diagnostico d WHERE d.fecha = :fecha")})
