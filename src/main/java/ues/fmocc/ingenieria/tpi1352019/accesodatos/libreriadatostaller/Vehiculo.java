@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Vehiculo.findAll", query = "SELECT v FROM Vehiculo v")
     , @NamedQuery(name = "Vehiculo.findByIdVehiculo", query = "SELECT v FROM Vehiculo v WHERE v.idVehiculo = :idVehiculo")
+    , @NamedQuery(name = "Vehiculo.vehiculoLikeplaca", query = "SELECT v FROM Vehiculo v WHERE v.idVehiculo like CONCAT(:id, '%')")
     , @NamedQuery(name = "Vehiculo.findByNumeroChasis", query = "SELECT v FROM Vehiculo v WHERE v.numeroChasis = :numeroChasis")
     , @NamedQuery(name = "Vehiculo.findByNumeroMotor", query = "SELECT v FROM Vehiculo v WHERE v.numeroMotor = :numeroMotor")
     , @NamedQuery(name = "Vehiculo.vehiculo.propietario", query = "SELECT t FROM Vehiculo t WHERE t.idPropietario.nombre like CONCAT('%', :name, '%')")
