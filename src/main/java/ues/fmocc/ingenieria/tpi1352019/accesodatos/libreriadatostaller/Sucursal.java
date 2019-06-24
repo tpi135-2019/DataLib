@@ -37,10 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Sucursal.findByIdSucursal", query = "SELECT s FROM Sucursal s WHERE s.idSucursal = :idSucursal")
     , @NamedQuery(name = "Sucursal.findByNombre", query = "SELECT s FROM Sucursal s WHERE s.nombre = :nombre")
     , @NamedQuery(name = "Sucursal.findByDireccion", query = "SELECT s FROM Sucursal s WHERE s.direccion = :direccion")
-    
+        
     , @NamedQuery(name = "Sucursal.Reparacion", query = "SELECT t FROM Sucursal t JOIN FETCH t.personalCollection per JOIN FETCH per.reparacionCollection r WHERE r.idReparacion=:id")
-
-   // , @NamedQuery(name = "Sucursal.Reparacion", query = "SELECT repa FROM Sucursal t JOIN FETCH t.personalCollection tra JOIN FETCH tra.reparacionCollection repa where t.idSucursal=:idSucursal")
+    , @NamedQuery(name = "Sucursal.Procesos", query = "SELECT p FROM Proceso p WHERE p.idEspecialidad.idEspecialidad IN (SELECT DISTINCT ec.idEspecialidad FROM Personal p JOIN p.especialidadCollection ec WHERE p.idSucursal.idSucursal = :idSucursal)")
     , @NamedQuery(name = "Sucursal.findByActivo", query = "SELECT s FROM Sucursal s WHERE s.activo = :activo")
     , @NamedQuery(name = "Sucursal.findByTelefono", query = "SELECT s FROM Sucursal s WHERE s.telefono = :telefono")})
 public class Sucursal implements Serializable {
@@ -60,7 +59,7 @@ public class Sucursal implements Serializable {
     @Column(name = "activo")
     private Boolean activo;
     @Column(name = "telefono", length = 45)
-    @Pattern(regexp = "[0-9]{4}-[0-9]{4}",message = "Introdusca un numero telefonico correcto")
+    @Pattern(regexp = "[0-9]{4}-[0-9]{4}", message = "Introdusca un numero telefonico correcto")
     private String telefono;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSucursal")
     private Collection<Personal> personalCollection;
@@ -142,12 +141,12 @@ public class Sucursal implements Serializable {
         }
         Sucursal other = (Sucursal) object;
         return !((this.idSucursal == null && other.idSucursal != null) || (this.idSucursal != null && !this.idSucursal.equals(other.idSucursal))
-              || (this.nombre != null && !this.nombre.equals(other.getNombre())));
+                || (this.nombre != null && !this.nombre.equals(other.getNombre())));
     }
 
     @Override
     public String toString() {
         return "ues.fmocc.ingenieria.tpi1352019.accesodatos.libreriadatostaller.Sucursal[ idSucursal=" + idSucursal + " ]";
     }
-    
+
 }
