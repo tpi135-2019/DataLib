@@ -10,7 +10,6 @@ import java.util.Collection;
 import java.util.Date;
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +26,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -62,28 +60,25 @@ public class Reparacion implements Serializable {
     @Column(name = "observacion", length = 200)
     @Size(min = 10)
     private String observacion;
-    
+
     @JoinTable(name = "paso_reparacion", joinColumns = {
         @JoinColumn(name = "id_reparacion", referencedColumnName = "id_reparacion", nullable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "id_paso_proceso", referencedColumnName = "id_paso_proceso", nullable = false)})
     @ManyToMany
-    @XmlElement
     private Collection<PasoProceso> pasoProcesoCollection;
-    
+
     @JoinTable(name = "pieza_reparacion", joinColumns = {
         @JoinColumn(name = "id_reparacion", referencedColumnName = "id_reparacion", nullable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "id_pieza", referencedColumnName = "id_pieza", nullable = false)})
     @ManyToMany
-    @XmlElement
     private Collection<Pieza> piezaCollection;
-    
+
     @JoinTable(name = "personal_reparacion", joinColumns = {
         @JoinColumn(name = "id_reparacion", referencedColumnName = "id_reparacion", nullable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "id_mecanico", referencedColumnName = "id_mecanico", nullable = false)})
     @ManyToMany
-    @XmlElement
     private Collection<Personal> personalCollection;
-    
+
     @JoinColumn(name = "id_diagnostico", referencedColumnName = "id_diagnostico", nullable = false)
     @ManyToOne(optional = false)
     private Diagnostico idDiagnostico;
@@ -94,9 +89,8 @@ public class Reparacion implements Serializable {
     public Reparacion(Integer idReparacion) {
         this.idReparacion = idReparacion;
     }
-    
-    
-     public Reparacion(Integer idReparacion, Date fecha, String observacion) {
+
+    public Reparacion(Integer idReparacion, Date fecha, String observacion) {
         this.idReparacion = idReparacion;
         this.fecha = fecha;
         this.observacion = observacion;
@@ -127,6 +121,7 @@ public class Reparacion implements Serializable {
     }
 
     @XmlTransient
+    @JsonbTransient
     public Collection<PasoProceso> getPasoProcesoCollection() {
         return pasoProcesoCollection;
     }
@@ -136,6 +131,7 @@ public class Reparacion implements Serializable {
     }
 
     @XmlTransient
+    @JsonbTransient
     public Collection<Pieza> getPiezaCollection() {
         return piezaCollection;
     }
@@ -144,7 +140,8 @@ public class Reparacion implements Serializable {
         this.piezaCollection = piezaCollection;
     }
 
-    @XmlTransient
+    @XmlTransient   
+    @JsonbTransient
     public Collection<Personal> getPersonalCollection() {
         return personalCollection;
     }

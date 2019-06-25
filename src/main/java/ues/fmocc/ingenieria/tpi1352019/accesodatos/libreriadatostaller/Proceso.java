@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Proceso.findAll", query = "SELECT p FROM Proceso p")
     ,@NamedQuery(name = "Proceso.Sucursal", query = "SELECT DISTINCT su FROM Sucursal su JOIN su.personalCollection pc JOIN pc.especialidadCollection ec WHERE ec.idEspecialidad IN (SELECT p.idEspecialidad.idEspecialidad FROM Proceso p WHERE p.idProceso = :idProceso)")
     , @NamedQuery(name = "Proceso.findByIdProceso", query = "SELECT p FROM Proceso p WHERE p.idProceso = :idProceso")
-    , @NamedQuery(name = "Proceso.findByNombre", query = "SELECT p FROM Proceso p WHERE p.nombre = :nombre")
+    , @NamedQuery(name = "Proceso.findByNombre", query = "SELECT p FROM Proceso p WHERE p.nombre LIKE CONCAT(:nombre, '%')")
     , @NamedQuery(name = "Proceso.findByActivo", query = "SELECT p FROM Proceso p WHERE p.activo = :activo")})
 public class Proceso implements Serializable {
 
